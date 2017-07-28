@@ -25,6 +25,20 @@ Make sure your virtualenv is activated. Then issue the following commands:
 (env)$ python -m ipykernel install --user --name testenv --display-name "Python3 (dqn-virtualenv)"
 ```
 ## Files
+### Jupyter notebooks
+#### training
+
+
+#### testing_5preds
+
+#### testing_independents
+
+#### analysis
+
+### Python files
+#### tf_rl/simulate.py
+
+#### tf_rl/simulation/karpathy_game.py
 
 ## Issues
 1. Inactive predators cannot eat
