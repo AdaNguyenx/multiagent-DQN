@@ -34,6 +34,7 @@ def simulate(simulation,
              all_rewards = [],
              percent = None,
              certainty = 0.0,
+             exploration = None,
              draw = 0):
     """Start the simulation. Performs three tasks
 
@@ -97,7 +98,6 @@ def simulate(simulation,
 
     num_actions = 0
     each_num_actions = np.zeros(len(act))
-    exploration = LinearSchedule(schedule_timesteps=5000, initial_p=1.0, final_p=0.02)
 
     trials = 0
     start = time.time()
@@ -140,7 +140,10 @@ def simulate(simulation,
 
             # produce action from network, then pool for majority
             for i in range(len(act)):
-                new_action[i] = act[i](last_observation[i], update_eps=exploration.value(each_num_actions[i]))[0]
+                if exploration is not None:
+                    new_action[i] = act[i](last_observation[i], update_eps=exploration.value(each_num_actions[i]))[0]
+                else:
+                    new_action[i] = act[i](last_observation[i], update_eps=0.02)[0]
 
             action_freq = np.bincount(new_action)
             consensus = np.argwhere(action_freq == max(action_freq))
@@ -157,8 +160,6 @@ def simulate(simulation,
                         new_action[i] = [consensus]
                 else:
                     new_action[i] = [new_action[i]]
-
-                new_action[i] = act[i](last_observation[i], update_eps=0.02)
 
                 simulation.perform_action(new_action[i], i)
 
