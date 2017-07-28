@@ -15,7 +15,17 @@ pip install -r requirements.txt
 
 ### Change euclid.py file
 Euclid has some syntax that doesn't work in Python 3, so you need to change the file in the installed packages.
-Go to your virtualenv folder > lib > python 3.5 > site-packages. Then replace euclid.py file there with the one in this repo.
+Go to your virtualenv folder > lib > python 3.5 > site-packages. Then replace the euclid.py file there with the one in this repo.
+
+### Set up IPython kernel to work with the virtualenv
+Make sure your virtualenv is activated. Then issue the following commands:
+```
+(env)$ pip install jupyter
+(env)$ pip install ipykernel
+(env)$ python -m ipykernel install --user --name testenv --display-name "Python3 (dqn-virtualenv)"
+```
+## Files
 
 ## Issues
-1. 
+1. Inactive predators cannot eat
+2. There can only be one physical cue (but several cue types)
