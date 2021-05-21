@@ -64,7 +64,7 @@ requests==2.18.1
 scipy==0.19.1
 simplegeneric==0.8.1
 six==1.10.0
-tensorflow==1.2.0
+tensorflow==2.5.0
 terminado==0.6
 testpath==0.3.1
 tornado==4.5.1
